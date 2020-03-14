@@ -25,7 +25,11 @@ def shortcutKeys(self, _old):
     return [
             ("j", lambda: self._answerCard(1)),  # fail
             ("h", lambda: self._answerCard(2)),  # hard
-            ("k", lambda: self._answerCard(3)),  # normal
+            # to guarantee that 'k' is always normal, it needs to be the button
+            # to the left of the rightmost one (i.e. 4-1 for review, 3-1 for
+            # new/learning cards).
+            ("k", lambda: self._answerCard(
+                self.mw.col.sched.answerButtons(self.card) - 1)),  # normal
             ("l", lambda: self._answerCard(4)),  # easy
             ("z", lambda: mw.onUndo()),  # undo (a bit hacky but works for me)
         ] + _old(self)
