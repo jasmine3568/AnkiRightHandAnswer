@@ -23,8 +23,8 @@ from anki.hooks import wrap
 
 def shortcutKeys(self, _old):
     return [
-            ("j", lambda: self._answerCard(1)),  # fail
-            ("h", lambda: self._answerCard(2)),  # hard
+            ("h", lambda: self._answerCard(1)),  # fail
+            ("j", lambda: self._answerCard(2)),  # hard
             # to guarantee that 'k' is always normal, it needs to be the button
             # to the left of the rightmost one (i.e. 4-1 for review, 3-1 for
             # new/learning cards).
